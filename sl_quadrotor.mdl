@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.30"
+    ComputedModelVersion    "1.33"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -21,7 +21,7 @@ Model {
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
   InitFcn		  "% load parameters of the default quadrotor\ndisp('Quadrotor parameters loaded by InitFcn')\nquadrotor_pa"
-  "ram"
+  "ram\nquadrotor_ctrl"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -31,7 +31,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1665.0, 24.0, 1615.0, 1026.0]
+      Location		      [2474.0, 52.0, 807.0, 998.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -53,11 +53,11 @@ Model {
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkSubsys"
-	LoadSaveID		"91"
-	Extents			[1579.0, 883.0]
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
+	Extents			[771.0, 855.0]
 	ZoomFactor		[1.0]
-	Offset			[0.0, 0.0]
+	Offset			[34.0573070511403, 4.5471103523653937]
       }
     }
   }
@@ -67,9 +67,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "zichao"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Dec 01 15:50:55 2014"
-  RTWModifiedTimeStamp	  339349840
-  ModelVersionFormat	  "1.%<AutoIncrement:30>"
+  LastModifiedDate	  "Mon Dec 01 16:56:03 2014"
+  RTWModifiedTimeStamp	  339353761
+  ModelVersionFormat	  "1.%<AutoIncrement:33>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -790,11 +790,6 @@ Model {
       OutputAsBus	      off
     }
     Block {
-      BlockType		      Clock
-      DisplayTime	      off
-      Decimation	      "10"
-    }
-    Block {
       BlockType		      Constant
       Value		      "1"
       VectorParams1D	      on
@@ -917,24 +912,6 @@ Model {
       RndMeth		      "Floor"
     }
     Block {
-      BlockType		      Scope
-      ModelBased	      off
-      TickLabels	      "OneTimeTick"
-      ZoomMode		      "on"
-      Grid		      "on"
-      TimeRange		      "auto"
-      YMin		      "-5"
-      YMax		      "5"
-      SaveToWorkspace	      off
-      SaveName		      "ScopeData"
-      DataFormat	      "Array"
-      LimitDataPoints	      on
-      MaxDataPoints	      "5000"
-      Decimation	      "1"
-      SampleInput	      off
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      Sin
       SineType		      "Time based"
       TimeSource	      "Use simulation time"
@@ -1008,8 +985,8 @@ Model {
   }
   System {
     Name		    "sl_quadrotor"
-    Location		    [1665, 24, 3280, 1050]
-    Open		    off
+    Location		    [2474, 52, 3281, 1050]
+    Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1022,13 +999,74 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "109"
+    SIDHighWatermark	    "168"
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "\n"
+      SID		      "158"
+      Ports		      [1]
+      Position		      [190, 20, 250, 50]
+      ZOrder		      10
+      VariableName	      "des_xy"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "\n\n"
+      SID		      "159"
+      Ports		      [1]
+      Position		      [20, 370, 80, 400]
+      ZOrder		      11
+      BlockMirror	      on
+      NamePlacement	      "alternate"
+      VariableName	      "des_yaw"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "\n\n\n"
+      SID		      "161"
+      Ports		      [1]
+      Position		      [442, 20, 498, 55]
+      ZOrder		      13
+      BlockRotation	      270
+      VariableName	      "des_pitch_roll"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "\ndes z"
+      SID		      "160"
+      Ports		      [1]
+      Position		      [20, 500, 80, 530]
+      ZOrder		      12
+      BlockMirror	      on
+      NamePlacement	      "alternate"
+      VariableName	      "des_z"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
     Block {
       BlockType		      BusSelector
       Name		      "Bus\nSelector1"
       SID		      "1"
       Ports		      [1, 1]
-      Position		      [125, 71, 130, 109]
+      Position		      [150, 96, 155, 134]
       ZOrder		      -1
       ForegroundColor	      "orange"
       ShowName		      off
@@ -1046,7 +1084,7 @@ Model {
       Name		      "Bus\nSelector2"
       SID		      "2"
       Ports		      [1, 1]
-      Position		      [125, 121, 130, 159]
+      Position		      [150, 146, 155, 184]
       ZOrder		      -2
       ForegroundColor	      "orange"
       ShowName		      off
@@ -1064,7 +1102,7 @@ Model {
       Name		      "Bus\nSelector3"
       SID		      "3"
       Ports		      [1, 1]
-      Position		      [435, 156, 440, 194]
+      Position		      [460, 181, 465, 219]
       ZOrder		      -3
       ForegroundColor	      "blue"
       ShowName		      off
@@ -1082,7 +1120,7 @@ Model {
       Name		      "Bus\nSelector4"
       SID		      "4"
       Ports		      [1, 1]
-      Position		      [435, 206, 440, 244]
+      Position		      [460, 231, 465, 269]
       ZOrder		      -4
       ForegroundColor	      "blue"
       ShowName		      off
@@ -1100,7 +1138,7 @@ Model {
       Name		      "Bus\nSelector5"
       SID		      "5"
       Ports		      [1, 2]
-      Position		      [125, 308, 130, 377]
+      Position		      [150, 333, 155, 402]
       ZOrder		      -5
       ShowName		      off
       OutputSignals	      "yaw,dyaw"
@@ -1122,7 +1160,7 @@ Model {
       Name		      "Bus\nSelector6"
       SID		      "6"
       Ports		      [1, 2]
-      Position		      [130, 438, 135, 507]
+      Position		      [155, 463, 160, 532]
       ZOrder		      -6
       ForegroundColor	      "red"
       ShowName		      off
@@ -1141,25 +1179,13 @@ Model {
       }
     }
     Block {
-      BlockType		      Clock
-      Name		      "Clock"
-      SID		      "70"
-      Position		      [700, 409, 745, 431]
-      ZOrder		      -7
-      BackgroundColor	      "yellow"
-      ShowName		      off
-      DisplayTime	      on
-    }
-    Block {
       BlockType		      SubSystem
       Name		      "Control Mixer"
       SID		      "93"
       Ports		      [4, 5]
-      Position		      [700, 45, 760, 355]
+      Position		      [725, 70, 785, 380]
       ZOrder		      -8
       DropShadow	      on
-      AncestorBlock	      "roblocks/Dynamics/Control Mixer"
-      LibraryVersion	      "1.60"
       RequestExecContextInheritance off
       Object {
 	$PropName		"MaskObject"
@@ -1175,7 +1201,7 @@ Model {
       }
       System {
 	Name			"Control Mixer"
-	Location		[1655, -14, 3290, 1060]
+	Location		[1665, 24, 3280, 1050]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1188,12 +1214,10 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"273"
-	SIDPrevWatermark	"273"
 	Block {
 	  BlockType		  Inport
 	  Name			  "tau pitch"
-	  SID			  "93:156"
+	  SID			  "119"
 	  Position		  [15, 78, 45, 92]
 	  ZOrder		  -1
 	  IconDisplay		  "Port number"
@@ -1201,7 +1225,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "tau roll"
-	  SID			  "93:157"
+	  SID			  "120"
 	  Position		  [15, 123, 45, 137]
 	  ZOrder		  -2
 	  Port			  "2"
@@ -1210,7 +1234,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "tau yaw"
-	  SID			  "93:158"
+	  SID			  "121"
 	  Position		  [15, 243, 45, 257]
 	  ZOrder		  -3
 	  Port			  "3"
@@ -1219,7 +1243,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "T"
-	  SID			  "93:159"
+	  SID			  "122"
 	  Position		  [15, 283, 45, 297]
 	  ZOrder		  -4
 	  Port			  "4"
@@ -1228,7 +1252,7 @@ Model {
 	Block {
 	  BlockType		  Gain
 	  Name			  "Gain1"
-	  SID			  "93:160"
+	  SID			  "123"
 	  Position		  [595, 205, 625, 235]
 	  ZOrder		  -5
 	  ShowName		  off
@@ -1240,7 +1264,7 @@ Model {
 	Block {
 	  BlockType		  Gain
 	  Name			  "Gain2"
-	  SID			  "93:161"
+	  SID			  "124"
 	  Position		  [595, 115, 625, 145]
 	  ZOrder		  -6
 	  ShowName		  off
@@ -1252,7 +1276,7 @@ Model {
 	Block {
 	  BlockType		  Mux
 	  Name			  "Mux"
-	  SID			  "93:162"
+	  SID			  "125"
 	  Ports			  [4, 1]
 	  Position		  [480, 276, 485, 314]
 	  ZOrder		  -7
@@ -1262,7 +1286,7 @@ Model {
 	Block {
 	  BlockType		  Saturate
 	  Name			  "Saturation1"
-	  SID			  "93:163"
+	  SID			  "126"
 	  Ports			  [1, 1]
 	  Position		  [520, 115, 550, 145]
 	  ZOrder		  -8
@@ -1274,7 +1298,7 @@ Model {
 	Block {
 	  BlockType		  Saturate
 	  Name			  "Saturation2"
-	  SID			  "93:164"
+	  SID			  "127"
 	  Ports			  [1, 1]
 	  Position		  [520, 70, 550, 100]
 	  ZOrder		  -9
@@ -1286,7 +1310,7 @@ Model {
 	Block {
 	  BlockType		  Saturate
 	  Name			  "Saturation3"
-	  SID			  "93:165"
+	  SID			  "128"
 	  Ports			  [1, 1]
 	  Position		  [520, 160, 550, 190]
 	  ZOrder		  -10
@@ -1298,7 +1322,7 @@ Model {
 	Block {
 	  BlockType		  Saturate
 	  Name			  "Saturation4"
-	  SID			  "93:166"
+	  SID			  "129"
 	  Ports			  [1, 1]
 	  Position		  [520, 205, 550, 235]
 	  ZOrder		  -11
@@ -1310,7 +1334,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum1"
-	  SID			  "93:167"
+	  SID			  "130"
 	  Ports			  [2, 1]
 	  Position		  [240, 75, 260, 95]
 	  ZOrder		  -12
@@ -1321,7 +1345,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum10"
-	  SID			  "93:168"
+	  SID			  "131"
 	  Ports			  [2, 1]
 	  Position		  [320, 120, 340, 140]
 	  ZOrder		  -13
@@ -1332,7 +1356,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum11"
-	  SID			  "93:169"
+	  SID			  "132"
 	  Ports			  [2, 1]
 	  Position		  [345, 165, 365, 185]
 	  ZOrder		  -14
@@ -1343,7 +1367,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum12"
-	  SID			  "93:170"
+	  SID			  "133"
 	  Ports			  [2, 1]
 	  Position		  [370, 210, 390, 230]
 	  ZOrder		  -15
@@ -1354,7 +1378,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum3"
-	  SID			  "93:171"
+	  SID			  "134"
 	  Ports			  [2, 1]
 	  Position		  [215, 120, 235, 140]
 	  ZOrder		  -16
@@ -1365,7 +1389,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum5"
-	  SID			  "93:172"
+	  SID			  "135"
 	  Ports			  [2, 1]
 	  Position		  [190, 165, 210, 185]
 	  ZOrder		  -17
@@ -1376,7 +1400,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum7"
-	  SID			  "93:173"
+	  SID			  "136"
 	  Ports			  [2, 1]
 	  Position		  [165, 210, 185, 230]
 	  ZOrder		  -18
@@ -1387,7 +1411,7 @@ Model {
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum9"
-	  SID			  "93:174"
+	  SID			  "137"
 	  Ports			  [2, 1]
 	  Position		  [290, 75, 310, 95]
 	  ZOrder		  -19
@@ -1398,7 +1422,7 @@ Model {
 	Block {
 	  BlockType		  Outport
 	  Name			  "w1"
-	  SID			  "93:175"
+	  SID			  "138"
 	  Position		  [650, 78, 680, 92]
 	  ZOrder		  -20
 	  IconDisplay		  "Port number"
@@ -1406,7 +1430,7 @@ Model {
 	Block {
 	  BlockType		  Outport
 	  Name			  "w2"
-	  SID			  "93:176"
+	  SID			  "139"
 	  Position		  [650, 123, 680, 137]
 	  ZOrder		  -21
 	  Port			  "2"
@@ -1415,7 +1439,7 @@ Model {
 	Block {
 	  BlockType		  Outport
 	  Name			  "w3"
-	  SID			  "93:177"
+	  SID			  "140"
 	  Position		  [650, 168, 680, 182]
 	  ZOrder		  -22
 	  Port			  "3"
@@ -1424,7 +1448,7 @@ Model {
 	Block {
 	  BlockType		  Outport
 	  Name			  "w4"
-	  SID			  "93:178"
+	  SID			  "141"
 	  Position		  [650, 213, 680, 227]
 	  ZOrder		  -23
 	  Port			  "4"
@@ -1433,7 +1457,7 @@ Model {
 	Block {
 	  BlockType		  Outport
 	  Name			  "all"
-	  SID			  "93:179"
+	  SID			  "142"
 	  Position		  [535, 288, 565, 302]
 	  ZOrder		  -24
 	  Port			  "5"
@@ -1694,10 +1718,10 @@ Model {
       BlockType		      Gain
       Name		      "D_pr"
       SID		      "28"
-      Position		      [515, 210, 545, 240]
+      Position		      [540, 235, 570, 265]
       ZOrder		      -9
       ForegroundColor	      "blue"
-      Gain		      ".1"
+      Gain		      "ctrl.D_pr"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1706,10 +1730,10 @@ Model {
       BlockType		      Gain
       Name		      "D_xy"
       SID		      "29"
-      Position		      [185, 125, 215, 155]
+      Position		      [210, 150, 240, 180]
       ZOrder		      -10
       ForegroundColor	      "orange"
-      Gain		      "2"
+      Gain		      "ctrl.D_xy"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1718,8 +1742,9 @@ Model {
       BlockType		      Gain
       Name		      "D_yaw"
       SID		      "30"
-      Position		      [220, 345, 250, 375]
+      Position		      [245, 370, 275, 400]
       ZOrder		      -11
+      Gain		      "ctrl.D_yaw"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1728,9 +1753,10 @@ Model {
       BlockType		      Gain
       Name		      "D_z"
       SID		      "31"
-      Position		      [220, 475, 250, 505]
+      Position		      [245, 500, 275, 530]
       ZOrder		      -12
       ForegroundColor	      "red"
+      Gain		      "ctrl.D_z"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1740,7 +1766,7 @@ Model {
       Name		      "Demux"
       SID		      "32"
       Ports		      [1, 2]
-      Position		      [665, 61, 670, 99]
+      Position		      [690, 86, 695, 124]
       ZOrder		      -13
       ForegroundColor	      "blue"
       ShowName		      off
@@ -1749,21 +1775,10 @@ Model {
     }
     Block {
       BlockType		      Mux
-      Name		      "Mux"
-      SID		      "71"
-      Ports		      [3, 1]
-      Position		      [840, 410, 845, 470]
-      ZOrder		      -14
-      ShowName		      off
-      Inputs		      "3"
-      DisplayOption	      "bar"
-    }
-    Block {
-      BlockType		      Mux
       Name		      "Mux1"
       SID		      "35"
       Ports		      [2, 1]
-      Position		      [100, 21, 105, 59]
+      Position		      [125, 46, 130, 84]
       ZOrder		      -15
       ShowName		      off
       Inputs		      "2"
@@ -1776,13 +1791,24 @@ Model {
       }
     }
     Block {
+      BlockType		      Mux
+      Name		      "Mux2"
+      SID		      "168"
+      Ports		      [2, 1]
+      Position		      [715, 21, 720, 59]
+      ZOrder		      19
+      ShowName		      off
+      Inputs		      "2"
+      DisplayOption	      "bar"
+    }
+    Block {
       BlockType		      Gain
       Name		      "P_pr"
       SID		      "36"
-      Position		      [605, 65, 635, 95]
+      Position		      [630, 90, 660, 120]
       ZOrder		      -16
       ForegroundColor	      "blue"
-      Gain		      "-400"
+      Gain		      "ctrl.P_pr"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1791,10 +1817,10 @@ Model {
       BlockType		      Gain
       Name		      "P_xy"
       SID		      "37"
-      Position		      [390, 65, 420, 95]
+      Position		      [415, 90, 445, 120]
       ZOrder		      -17
       ForegroundColor	      "orange"
-      Gain		      "0.1*[-1, 1]"
+      Gain		      "ctrl.P_xy"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1809,9 +1835,9 @@ Model {
       BlockType		      Gain
       Name		      "P_yaw"
       SID		      "38"
-      Position		      [340, 310, 370, 340]
+      Position		      [365, 335, 395, 365]
       ZOrder		      -18
-      Gain		      "-100"
+      Gain		      "ctrl.P_yaw"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1820,10 +1846,10 @@ Model {
       BlockType		      Gain
       Name		      "P_z"
       SID		      "39"
-      Position		      [340, 440, 370, 470]
+      Position		      [365, 465, 395, 495]
       ZOrder		      -19
       ForegroundColor	      "red"
-      Gain		      "-40"
+      Gain		      "ctrl.P_z"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1833,7 +1859,7 @@ Model {
       Name		      "Product"
       SID		      "89"
       Ports		      [2, 1]
-      Position		      [275, 54, 305, 101]
+      Position		      [300, 79, 330, 126]
       ZOrder		      -20
       ForegroundColor	      "green"
       ShowName		      off
@@ -1847,11 +1873,9 @@ Model {
       Name		      "Quadrotor"
       SID		      "85"
       Ports		      [4, 1]
-      Position		      [810, 47, 870, 293]
+      Position		      [835, 72, 895, 318]
       ZOrder		      -21
       DropShadow	      on
-      AncestorBlock	      "roblocks/Dynamics/Quadrotor"
-      LibraryVersion	      "*1.60"
       RequestExecContextInheritance off
       Object {
 	$PropName		"MaskObject"
@@ -1899,12 +1923,10 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"714"
-	SIDPrevWatermark	"714"
 	Block {
 	  BlockType		  Inport
 	  Name			  "w 1"
-	  SID			  "85:181"
+	  SID			  "110"
 	  Position		  [25, 128, 55, 142]
 	  ZOrder		  -1
 	  IconDisplay		  "Port number"
@@ -1912,7 +1934,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "w 2"
-	  SID			  "85:182"
+	  SID			  "111"
 	  Position		  [25, 158, 55, 172]
 	  ZOrder		  -2
 	  Port			  "2"
@@ -1921,7 +1943,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "w 3"
-	  SID			  "85:183"
+	  SID			  "112"
 	  Position		  [25, 188, 55, 202]
 	  ZOrder		  -3
 	  Port			  "3"
@@ -1930,7 +1952,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "w 4"
-	  SID			  "85:184"
+	  SID			  "113"
 	  Position		  [25, 218, 55, 232]
 	  ZOrder		  -4
 	  Port			  "4"
@@ -1939,7 +1961,7 @@ Model {
 	Block {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator"
-	  SID			  "85:185"
+	  SID			  "114"
 	  Ports			  [12, 1]
 	  Position		  [305, 17, 310, 338]
 	  ZOrder		  -5
@@ -1950,7 +1972,7 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  "Demux"
-	  SID			  "85:186"
+	  SID			  "115"
 	  Ports			  [1, 12]
 	  Position		  [230, 37, 235, 318]
 	  ZOrder		  -6
@@ -2033,7 +2055,7 @@ Model {
 	Block {
 	  BlockType		  S-Function
 	  Name			  "Dynamics"
-	  SID			  "85:187"
+	  SID			  "116"
 	  Ports			  [1, 1]
 	  Position		  [110, 165, 195, 195]
 	  ZOrder		  -7
@@ -2044,7 +2066,7 @@ Model {
 	Block {
 	  BlockType		  Mux
 	  Name			  "Mux"
-	  SID			  "85:188"
+	  SID			  "117"
 	  Ports			  [4, 1]
 	  Position		  [80, 119, 85, 241]
 	  ZOrder		  -8
@@ -2054,7 +2076,7 @@ Model {
 	Block {
 	  BlockType		  Outport
 	  Name			  "X"
-	  SID			  "85:189"
+	  SID			  "118"
 	  Position		  [345, 173, 375, 187]
 	  ZOrder		  -9
 	  IconDisplay		  "Port number"
@@ -2223,35 +2245,14 @@ Model {
       Name		      "Quadrotor plot"
       SID		      "91"
       Ports		      [1]
-      Position		      [650, 422, 680, 468]
+      Position		      [765, 477, 795, 523]
       ZOrder		      -22
       DropShadow	      on
-      AncestorBlock	      "roblocks/Robot Graphics/Quadrotor plot"
-      LibraryVersion	      "*1.60"
       RequestExecContextInheritance off
-      Object {
-	$PropName		"MaskObject"
-	$ObjectID		22
-	$ClassName		"Simulink.Mask"
-	Description		"Animate quadrotor."
-	Help			"This block graphically displays a quadrotor (flying robot).\n\nA new figure is created and A graphical model "
-	"of a quadrotor is animated \nto a pose specified by the state vector input to the block.  \n\nThe state vector is [x "
-	"y z roll pitch yaw] in world coordinates and the\nangles are in radians.\n\nNotes:\n- The dimensions of the model are"
-	" currently fixed in the code and cannot\n  be set via a parameter."
-	Object {
-	  $PropName		  "Parameters"
-	  $ObjectID		  23
-	  $ClassName		  "Simulink.MaskParameter"
-	  Type			  "edit"
-	  Name			  "x"
-	  Prompt		  "State vector"
-	  Value			  "0"
-	}
-      }
       System {
 	Name			"Quadrotor plot"
 	Location		[1665, 24, 3280, 1050]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -2263,12 +2264,10 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"236"
-	SIDPrevWatermark	"236"
 	Block {
 	  BlockType		  Inport
 	  Name			  "X"
-	  SID			  "91:191"
+	  SID			  "143"
 	  Position		  [50, 113, 80, 127]
 	  ZOrder		  -1
 	  IconDisplay		  "Port number"
@@ -2276,7 +2275,7 @@ Model {
 	Block {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector1"
-	  SID			  "91:192"
+	  SID			  "144"
 	  Ports			  [1, 1]
 	  Position		  [110, 101, 115, 139]
 	  ZOrder		  -2
@@ -2287,7 +2286,7 @@ Model {
 	Block {
 	  BlockType		  S-Function
 	  Name			  "Plotter"
-	  SID			  "91:193"
+	  SID			  "145"
 	  Ports			  [1]
 	  Position		  [155, 105, 215, 135]
 	  ZOrder		  -3
@@ -2316,50 +2315,18 @@ Model {
       Name		      "RZ^T"
       SID		      "78"
       Ports		      [1, 1]
-      Position		      [160, 235, 220, 265]
+      Position		      [185, 260, 245, 290]
       ZOrder		      -23
       MATLABFcn		      "inv([cos(u) -sin(u); sin(u) cos(u)])"
       OutputDimensions	      "[2 2]"
       Output1D		      off
     }
     Block {
-      BlockType		      Scope
-      Name		      "Scope"
-      SID		      "79"
-      Ports		      [1]
-      Position		      [285, 379, 315, 411]
-      ZOrder		      -24
-      Floating		      off
-      Location		      [73, 568, 397, 807]
-      Open		      off
-      NumInputPorts	      "1"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      ShowLegends	      off
-      YMin		      "-0.04"
-      YMax		      "0.045"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
-      ScrollMode	      off
-    }
-    Block {
       BlockType		      Sum
       Name		      "Sum1"
       SID		      "54"
       Ports		      [2, 1]
-      Position		      [220, 315, 240, 335]
+      Position		      [245, 340, 265, 360]
       ZOrder		      -25
       ShowName		      off
       IconShape		      "round"
@@ -2373,7 +2340,7 @@ Model {
       Name		      "Sum15"
       SID		      "55"
       Ports		      [2, 1]
-      Position		      [275, 445, 295, 465]
+      Position		      [300, 470, 320, 490]
       ZOrder		      -26
       ForegroundColor	      "red"
       ShowName		      off
@@ -2388,7 +2355,7 @@ Model {
       Name		      "Sum16"
       SID		      "56"
       Ports		      [2, 1]
-      Position		      [560, 70, 580, 90]
+      Position		      [585, 95, 605, 115]
       ZOrder		      -27
       ForegroundColor	      "blue"
       ShowName		      off
@@ -2403,7 +2370,7 @@ Model {
       Name		      "Sum17"
       SID		      "57"
       Ports		      [2, 1]
-      Position		      [185, 80, 205, 100]
+      Position		      [210, 105, 230, 125]
       ZOrder		      -28
       ForegroundColor	      "orange"
       ShowName		      off
@@ -2424,7 +2391,7 @@ Model {
       Name		      "Sum18"
       SID		      "58"
       Ports		      [2, 1]
-      Position		      [345, 70, 365, 90]
+      Position		      [370, 95, 390, 115]
       ZOrder		      -29
       ForegroundColor	      "orange"
       ShowName		      off
@@ -2439,7 +2406,7 @@ Model {
       Name		      "Sum19"
       SID		      "59"
       Ports		      [2, 1]
-      Position		      [485, 70, 505, 90]
+      Position		      [510, 95, 530, 115]
       ZOrder		      -30
       ForegroundColor	      "blue"
       ShowName		      off
@@ -2460,7 +2427,7 @@ Model {
       Name		      "Sum2"
       SID		      "60"
       Ports		      [2, 1]
-      Position		      [265, 315, 285, 335]
+      Position		      [290, 340, 310, 360]
       ZOrder		      -31
       ShowName		      off
       IconShape		      "round"
@@ -2474,7 +2441,7 @@ Model {
       Name		      "Sum3"
       SID		      "61"
       Ports		      [2, 1]
-      Position		      [220, 445, 240, 465]
+      Position		      [245, 470, 265, 490]
       ZOrder		      -32
       ForegroundColor	      "red"
       ShowName		      off
@@ -2489,7 +2456,7 @@ Model {
       Name		      "Sum4"
       SID		      "62"
       Ports		      [2, 1]
-      Position		      [415, 445, 435, 465]
+      Position		      [440, 470, 460, 490]
       ZOrder		      -33
       ForegroundColor	      "red"
       DropShadow	      on
@@ -2502,33 +2469,65 @@ Model {
     }
     Block {
       BlockType		      ToWorkspace
-      Name		      "To Workspace"
-      SID		      "69"
+      Name		      "des thrust"
+      SID		      "166"
       Ports		      [1]
-      Position		      [870, 425, 920, 455]
-      ZOrder		      -34
-      ShowName		      off
-      VariableName	      "result"
+      Position		      [635, 405, 695, 435]
+      ZOrder		      17
+      VariableName	      "des_thrust"
       MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
       SampleTime	      "-1"
     }
     Block {
       BlockType		      ToWorkspace
-      Name		      "To Workspace1"
-      SID		      "72"
+      Name		      "des torq"
+      SID		      "167"
       Ports		      [1]
-      Position		      [535, 465, 595, 495]
-      ZOrder		      -35
-      ShowName		      off
-      VariableName	      "T"
+      Position		      [805, 25, 865, 55]
+      ZOrder		      18
+      VariableName	      "des_torq"
       MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "four rotors"
+      SID		      "164"
+      Ports		      [1]
+      Position		      [835, 360, 895, 390]
+      ZOrder		      16
+      VariableName	      "four_rotors"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "quad state"
+      SID		      "163"
+      Ports		      [1]
+      Position		      [980, 485, 1040, 515]
+      ZOrder		      15
+      VariableName	      "quad_states"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
       SampleTime	      "-1"
     }
     Block {
       BlockType		      Constant
       Name		      "w0"
       SID		      "63"
-      Position		      [380, 380, 410, 410]
+      Position		      [405, 405, 435, 435]
       ZOrder		      -36
       ForegroundColor	      "red"
       DropShadow	      on
@@ -2540,7 +2539,7 @@ Model {
       Name		      "x*"
       SID		      "64"
       Ports		      [0, 1]
-      Position		      [25, 15, 55, 45]
+      Position		      [50, 40, 80, 70]
       ZOrder		      -37
       Frequency		      "2*pi*.125"
       Phase		      "-pi/2"
@@ -2551,7 +2550,7 @@ Model {
       Name		      "y*"
       SID		      "65"
       Ports		      [0, 1]
-      Position		      [25, 65, 55, 95]
+      Position		      [50, 90, 80, 120]
       ZOrder		      -38
       Frequency		      "2*pi*.125"
       SampleTime	      "0"
@@ -2561,7 +2560,7 @@ Model {
       Name		      "yaw*"
       SID		      "84"
       Ports		      [0, 1]
-      Position		      [25, 280, 55, 310]
+      Position		      [50, 305, 80, 335]
       ZOrder		      -39
       LibraryVersion	      "1.354"
       SourceBlock	      "simulink/Sources/Ramp"
@@ -2576,7 +2575,7 @@ Model {
       BlockType		      Constant
       Name		      "z*"
       SID		      "68"
-      Position		      [25, 405, 55, 435]
+      Position		      [50, 430, 80, 460]
       ZOrder		      -40
       Value		      "-4"
       SampleTime	      "0"
@@ -2618,16 +2617,31 @@ Model {
       DstPort		      2
     }
     Line {
+      FontName		      "Helvetica"
+      FontSize		      9
+      FontWeight	      "normal"
+      FontAngle		      "normal"
       ZOrder		      6
       SrcBlock		      "Quadrotor"
       SrcPort		      1
-      Points		      [55, 0; 0, 365; -130, 0]
+      Points		      [55, 0; 0, 305]
       Branch {
-	ZOrder			7
-	Points			[-180, 0]
+	ZOrder			145
+	DstBlock		"quad state"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			144
+	Points			[0, 60; -239, 0]
 	Branch {
-	  ZOrder		  8
-	  Points		  [-530, 0; 0, -60]
+	  ZOrder		  156
+	  Points		  [0, -60]
+	  DstBlock		  "Quadrotor plot"
+	  DstPort		  1
+	}
+	Branch {
+	  ZOrder		  155
+	  Points		  [-601, 0; 0, -60]
 	  Branch {
 	    ZOrder		    9
 	    DstBlock		    "Bus\nSelector6"
@@ -2676,18 +2690,6 @@ Model {
 	    }
 	  }
 	}
-	Branch {
-	  ZOrder		  19
-	  Points		  [0, -90]
-	  DstBlock		  "Quadrotor plot"
-	  DstPort		  1
-	}
-      }
-      Branch {
-	ZOrder			20
-	Points			[0, -95]
-	DstBlock		"Mux"
-	DstPort			2
       }
     }
     Line {
@@ -2720,9 +2722,19 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Mux1"
       SrcPort		      1
-      Points		      [85, 0]
-      DstBlock		      "Sum17"
-      DstPort		      1
+      Points		      [39, 0]
+      Branch {
+	ZOrder			134
+	Points			[0, -30]
+	DstBlock		"\n"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			133
+	Points			[46, 0]
+	DstBlock		"Sum17"
+	DstPort			1
+      }
     }
     Line {
       Name		      "xy rates"
@@ -2747,8 +2759,17 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "P_xy"
       SrcPort		      1
-      DstBlock		      "Sum19"
-      DstPort		      1
+      Points		      [20, 0]
+      Branch {
+	ZOrder			143
+	DstBlock		"Sum19"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			140
+	DstBlock		"\n\n\n"
+	DstPort			1
+      }
     }
     Line {
       Name		      "pitch/roll"
@@ -2789,16 +2810,35 @@ Model {
       ZOrder		      32
       SrcBlock		      "P_pr"
       SrcPort		      1
-      DstBlock		      "Demux"
-      DstPort		      1
+      Points		      [10, 0]
+      Branch {
+	ZOrder			154
+	Points			[0, -75]
+	DstBlock		"Mux2"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			153
+	DstBlock		"Demux"
+	DstPort			1
+      }
     }
     Line {
       ZOrder		      33
       SrcBlock		      "P_yaw"
       SrcPort		      1
       Points		      [270, 0; 0, -85]
-      DstBlock		      "Control Mixer"
-      DstPort		      3
+      Branch {
+	ZOrder			151
+	Points			[0, -215]
+	DstBlock		"Mux2"
+	DstPort			2
+      }
+      Branch {
+	ZOrder			150
+	DstBlock		"Control Mixer"
+	DstPort			3
+      }
     }
     Line {
       Name		      "<yaw>"
@@ -2814,18 +2854,8 @@ Model {
       }
       Branch {
 	ZOrder			36
-	Points			[15, 0]
-	Branch {
-	  ZOrder		  37
-	  DstBlock		  "Sum1"
-	  DstPort		  2
-	}
-	Branch {
-	  ZOrder		  38
-	  Points		  [0, 70]
-	  DstBlock		  "Scope"
-	  DstPort		  1
-	}
+	DstBlock		"Sum1"
+	DstPort			2
       }
     }
     Line {
@@ -2848,9 +2878,18 @@ Model {
       ZOrder		      41
       SrcBlock		      "z*"
       SrcPort		      1
-      Points		      [170, 0]
-      DstBlock		      "Sum3"
-      DstPort		      1
+      Points		      [10, 0]
+      Branch {
+	ZOrder			138
+	DstBlock		"\ndes z"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			137
+	Points			[160, 0]
+	DstBlock		"Sum3"
+	DstPort			1
+      }
     }
     Line {
       Name		      "<dyaw>"
@@ -2911,19 +2950,19 @@ Model {
     }
     Line {
       ZOrder		      49
+      Labels		      [3, 0]
       SrcBlock		      "Sum4"
       SrcPort		      1
-      Points		      [75, 0]
+      Points		      [20, 0; 0, -110; 133, 0]
       Branch {
-	ZOrder			50
-	Points			[0, 25]
-	DstBlock		"To Workspace1"
+	ZOrder			148
+	Points			[0, 50]
+	DstBlock		"des thrust"
 	DstPort			1
       }
       Branch {
-	ZOrder			51
-	Labels			[3, 0]
-	Points			[65, 0; 0, -110; 90, 0; 0, -30]
+	ZOrder			147
+	Points			[77, 0; 0, -30]
 	DstBlock		"Control Mixer"
 	DstPort			4
       }
@@ -2936,29 +2975,6 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      53
-      SrcBlock		      "Mux"
-      SrcPort		      1
-      DstBlock		      "To Workspace"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      54
-      SrcBlock		      "Clock"
-      SrcPort		      1
-      DstBlock		      "Mux"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      55
-      Labels		      [2, 0]
-      SrcBlock		      "Control Mixer"
-      SrcPort		      5
-      Points		      [20, 0; 0, 140]
-      DstBlock		      "Mux"
-      DstPort		      3
-    }
-    Line {
       ZOrder		      56
       SrcBlock		      "Sum18"
       SrcPort		      1
@@ -2969,9 +2985,18 @@ Model {
       ZOrder		      57
       SrcBlock		      "yaw*"
       SrcPort		      1
-      Points		      [170, 0]
-      DstBlock		      "Sum1"
-      DstPort		      1
+      Points		      [10, 0]
+      Branch {
+	ZOrder			136
+	DstBlock		"\n\n"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			135
+	Points			[160, 0]
+	DstBlock		"Sum1"
+	DstPort			1
+      }
     }
     Line {
       ZOrder		      58
@@ -3019,10 +3044,25 @@ Model {
       DstBlock		      "Quadrotor"
       DstPort		      2
     }
+    Line {
+      ZOrder		      146
+      SrcBlock		      "Control Mixer"
+      SrcPort		      5
+      Points		      [20, 0; 0, 30]
+      DstBlock		      "four rotors"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      149
+      SrcBlock		      "Mux2"
+      SrcPort		      1
+      DstBlock		      "des torq"
+      DstPort		      1
+    }
     Annotation {
       SID		      "94"
       Name		      " "
-      Position		      [470, 40, 474, 57]
+      Position		      [495, 65, 499, 82]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3031,16 +3071,20 @@ Model {
     Annotation {
       SID		      "95"
       Name		      "state vector"
-      Position		      [446, 523, 500, 540]
+      Position		      [471, 548, 525, 565]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
       ZOrder		      -2
+      FontName		      "Helvetica"
+      FontSize		      10
+      FontWeight	      "normal"
+      FontAngle		      "normal"
     }
     Annotation {
       SID		      "96"
       Name		      "gravity feedforward"
-      Position		      [442, 475, 528, 492]
+      Position		      [467, 500, 553, 517]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3049,7 +3093,7 @@ Model {
     Annotation {
       SID		      "97"
       Name		      "attitude rate\nloop"
-      Position		      [582, 135, 636, 167]
+      Position		      [607, 160, 662, 192]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3059,7 +3103,7 @@ Model {
     Annotation {
       SID		      "98"
       Name		      "attitude\nloop"
-      Position		      [504, 135, 538, 167]
+      Position		      [529, 160, 564, 192]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3069,7 +3113,7 @@ Model {
     Annotation {
       SID		      "99"
       Name		      "position rate\nloop"
-      Position		      [367, 130, 423, 162]
+      Position		      [392, 155, 449, 187]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3079,7 +3123,7 @@ Model {
     Annotation {
       SID		      "100"
       Name		      "position\nloop"
-      Position		      [242, 50, 278, 82]
+      Position		      [267, 75, 303, 107]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3089,7 +3133,7 @@ Model {
     Annotation {
       SID		      "101"
       Name		      "yaw rate\nloop"
-      Position		      [287, 365, 326, 397]
+      Position		      [312, 390, 352, 422]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3099,7 +3143,7 @@ Model {
     Annotation {
       SID		      "102"
       Name		      "yaw angle\nloop"
-      Position		      [242, 300, 288, 332]
+      Position		      [267, 325, 314, 357]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3109,7 +3153,7 @@ Model {
     Annotation {
       SID		      "103"
       Name		      "height rate\nloop"
-      Position		      [292, 470, 341, 502]
+      Position		      [317, 495, 367, 527]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3119,21 +3163,12 @@ Model {
     Annotation {
       SID		      "104"
       Name		      "height \nloop"
-      Position		      [242, 430, 273, 462]
+      Position		      [267, 455, 298, 487]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
       HorizontalAlignment     "left"
       ZOrder		      -11
-    }
-    Annotation {
-      SID		      "105"
-      Name		      "state"
-      Position		      [938, 140, 961, 157]
-      InternalMargins	      [0, 0, 0, 0]
-      FixedHeight	      off
-      FixedWidth	      off
-      ZOrder		      -12
     }
   }
 }
