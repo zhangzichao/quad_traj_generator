@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.33"
+    ComputedModelVersion    "1.34"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -21,7 +21,7 @@ Model {
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
   InitFcn		  "% load parameters of the default quadrotor\ndisp('Quadrotor parameters loaded by InitFcn')\nquadrotor_pa"
-  "ram\nquadrotor_ctrl"
+  "ram\nquadrotor_ctrl\ndes_traj"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -31,7 +31,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [2474.0, 52.0, 807.0, 998.0]
+      Location		      [1649.0, 14.0, 827.0, 1046.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -56,8 +56,8 @@ Model {
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
 	Extents			[771.0, 855.0]
-	ZoomFactor		[1.0]
-	Offset			[34.0573070511403, 4.5471103523653937]
+	ZoomFactor		[1.25]
+	Offset			[-143.44448268651763, -36.18739488825824]
       }
     }
   }
@@ -67,9 +67,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "zichao"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Dec 01 16:56:03 2014"
-  RTWModifiedTimeStamp	  339353761
-  ModelVersionFormat	  "1.%<AutoIncrement:33>"
+  LastModifiedDate	  "Mon Dec 01 18:22:52 2014"
+  RTWModifiedTimeStamp	  339358897
+  ModelVersionFormat	  "1.%<AutoIncrement:34>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -809,6 +809,15 @@ Model {
       BusSelectionMode	      off
     }
     Block {
+      BlockType		      FromWorkspace
+      VariableName	      "simulink_input"
+      OutDataTypeStr	      "Inherit: auto"
+      SampleTime	      "-1"
+      Interpolate	      on
+      ZeroCross		      off
+      OutputAfterFinalValue   "Extrapolation"
+    }
+    Block {
       BlockType		      Gain
       Gain		      "1"
       Multiplication	      "Element-wise(K.*u)"
@@ -912,19 +921,6 @@ Model {
       RndMeth		      "Floor"
     }
     Block {
-      BlockType		      Sin
-      SineType		      "Time based"
-      TimeSource	      "Use simulation time"
-      Amplitude		      "1"
-      Bias		      "0"
-      Frequency		      "1"
-      Phase		      "0"
-      Samples		      "10"
-      Offset		      "0"
-      SampleTime	      "-1"
-      VectorParams1D	      on
-    }
-    Block {
       BlockType		      SubSystem
       ShowPortLabels	      "FromPortIcon"
       Permissions	      "ReadWrite"
@@ -985,7 +981,7 @@ Model {
   }
   System {
     Name		    "sl_quadrotor"
-    Location		    [2474, 52, 3281, 1050]
+    Location		    [1649, 14, 2476, 1060]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -997,9 +993,9 @@ Model {
     TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "168"
+    SIDHighWatermark	    "173"
     Block {
       BlockType		      ToWorkspace
       Name		      "\n"
@@ -2496,6 +2492,46 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      FromWorkspace
+      Name		      "des x"
+      SID		      "169"
+      Position		      [0, 43, 65, 67]
+      ZOrder		      20
+      VariableName	      "traj.x"
+      SampleTime	      "0"
+      ZeroCross		      on
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "des y"
+      SID		      "170"
+      Position		      [0, 93, 65, 117]
+      ZOrder		      21
+      VariableName	      "traj.y"
+      SampleTime	      "0"
+      ZeroCross		      on
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "des yaw"
+      SID		      "171"
+      Position		      [15, 308, 80, 332]
+      ZOrder		      22
+      VariableName	      "traj.yaw"
+      SampleTime	      "0"
+      ZeroCross		      on
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "des_z"
+      SID		      "172"
+      Position		      [15, 433, 80, 457]
+      ZOrder		      23
+      VariableName	      "traj.z"
+      SampleTime	      "0"
+      ZeroCross		      on
+    }
+    Block {
       BlockType		      ToWorkspace
       Name		      "four rotors"
       SID		      "164"
@@ -2532,52 +2568,6 @@ Model {
       ForegroundColor	      "red"
       DropShadow	      on
       Value		      "sqrt(quad.M*quad.g/4/quad.b)"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Sin
-      Name		      "x*"
-      SID		      "64"
-      Ports		      [0, 1]
-      Position		      [50, 40, 80, 70]
-      ZOrder		      -37
-      Frequency		      "2*pi*.125"
-      Phase		      "-pi/2"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Sin
-      Name		      "y*"
-      SID		      "65"
-      Ports		      [0, 1]
-      Position		      [50, 90, 80, 120]
-      ZOrder		      -38
-      Frequency		      "2*pi*.125"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Reference
-      Name		      "yaw*"
-      SID		      "84"
-      Ports		      [0, 1]
-      Position		      [50, 305, 80, 335]
-      ZOrder		      -39
-      LibraryVersion	      "1.354"
-      SourceBlock	      "simulink/Sources/Ramp"
-      SourceType	      "Ramp"
-      ContentPreviewEnabled   off
-      slope		      "0.2"
-      start		      "2"
-      X0		      "0"
-      VectorParams1D	      on
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "z*"
-      SID		      "68"
-      Position		      [50, 430, 80, 460]
-      ZOrder		      -40
-      Value		      "-4"
       SampleTime	      "0"
     }
     Line {
@@ -2617,10 +2607,6 @@ Model {
       DstPort		      2
     }
     Line {
-      FontName		      "Helvetica"
-      FontSize		      9
-      FontWeight	      "normal"
-      FontAngle		      "normal"
       ZOrder		      6
       SrcBlock		      "Quadrotor"
       SrcPort		      1
@@ -2691,21 +2677,6 @@ Model {
 	  }
 	}
       }
-    }
-    Line {
-      ZOrder		      21
-      SrcBlock		      "x*"
-      SrcPort		      1
-      DstBlock		      "Mux1"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      22
-      SrcBlock		      "y*"
-      SrcPort		      1
-      Points		      [5, 0; 0, -30]
-      DstBlock		      "Mux1"
-      DstPort		      2
     }
     Line {
       Name		      "xy"
@@ -2875,17 +2846,17 @@ Model {
       DstPort		      2
     }
     Line {
-      ZOrder		      41
-      SrcBlock		      "z*"
+      ZOrder		      224
+      SrcBlock		      "des_z"
       SrcPort		      1
       Points		      [10, 0]
       Branch {
-	ZOrder			138
+	ZOrder			226
 	DstBlock		"\ndes z"
 	DstPort			1
       }
       Branch {
-	ZOrder			137
+	ZOrder			225
 	Points			[160, 0]
 	DstBlock		"Sum3"
 	DstPort			1
@@ -2982,8 +2953,8 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      57
-      SrcBlock		      "yaw*"
+      ZOrder		      223
+      SrcBlock		      "des yaw"
       SrcPort		      1
       Points		      [10, 0]
       Branch {
@@ -3059,6 +3030,21 @@ Model {
       DstBlock		      "des torq"
       DstPort		      1
     }
+    Line {
+      ZOrder		      221
+      SrcBlock		      "des x"
+      SrcPort		      1
+      DstBlock		      "Mux1"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      222
+      SrcBlock		      "des y"
+      SrcPort		      1
+      Points		      [25, 0; 0, -30]
+      DstBlock		      "Mux1"
+      DstPort		      2
+    }
     Annotation {
       SID		      "94"
       Name		      " "
@@ -3076,10 +3062,6 @@ Model {
       FixedHeight	      off
       FixedWidth	      off
       ZOrder		      -2
-      FontName		      "Helvetica"
-      FontSize		      10
-      FontWeight	      "normal"
-      FontAngle		      "normal"
     }
     Annotation {
       SID		      "96"
@@ -3093,7 +3075,7 @@ Model {
     Annotation {
       SID		      "97"
       Name		      "attitude rate\nloop"
-      Position		      [607, 160, 662, 192]
+      Position		      [607, 160, 661, 192]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3103,7 +3085,7 @@ Model {
     Annotation {
       SID		      "98"
       Name		      "attitude\nloop"
-      Position		      [529, 160, 564, 192]
+      Position		      [529, 160, 563, 192]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3113,7 +3095,7 @@ Model {
     Annotation {
       SID		      "99"
       Name		      "position rate\nloop"
-      Position		      [392, 155, 449, 187]
+      Position		      [392, 155, 448, 187]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3133,7 +3115,7 @@ Model {
     Annotation {
       SID		      "101"
       Name		      "yaw rate\nloop"
-      Position		      [312, 390, 352, 422]
+      Position		      [312, 390, 351, 422]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3143,7 +3125,7 @@ Model {
     Annotation {
       SID		      "102"
       Name		      "yaw angle\nloop"
-      Position		      [267, 325, 314, 357]
+      Position		      [267, 325, 313, 357]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3153,7 +3135,7 @@ Model {
     Annotation {
       SID		      "103"
       Name		      "height rate\nloop"
-      Position		      [317, 495, 367, 527]
+      Position		      [317, 495, 366, 527]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
