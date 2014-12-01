@@ -2,12 +2,12 @@ Model {
   Name			  "sl_quadrotor"
   Version		  8.4
   MdlSubVersion		  0
-  SavedCharacterEncoding  "ISO-8859-1"
+  SavedCharacterEncoding  "UTF-8"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.29"
+    ComputedModelVersion    "1.30"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -20,8 +20,8 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  InitFcn		  "% load parameters of the default quadrotor\ndisp('Quadrotor parameters loaded by InitFcn')\nquadcopter_p"
-  "aram"
+  InitFcn		  "% load parameters of the default quadrotor\ndisp('Quadrotor parameters loaded by InitFcn')\nquadrotor_pa"
+  "ram"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -31,7 +31,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1655.0, -14.0, 1635.0, 1074.0]
+      Location		      [1665.0, 24.0, 1615.0, 1026.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -53,11 +53,11 @@ Model {
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkTopLevel"
-	LoadSaveID		"0"
+	ViewObjType		"SimulinkSubsys"
+	LoadSaveID		"91"
 	Extents			[1579.0, 883.0]
 	ZoomFactor		[1.0]
-	Offset			[24.029231001654239, -47.450000000000443]
+	Offset			[0.0, 0.0]
       }
     }
   }
@@ -67,9 +67,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "zichao"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Dec 01 15:43:37 2014"
-  RTWModifiedTimeStamp	  339349318
-  ModelVersionFormat	  "1.%<AutoIncrement:29>"
+  LastModifiedDate	  "Mon Dec 01 15:50:55 2014"
+  RTWModifiedTimeStamp	  339349840
+  ModelVersionFormat	  "1.%<AutoIncrement:30>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1008,8 +1008,8 @@ Model {
   }
   System {
     Name		    "sl_quadrotor"
-    Location		    [1655, -14, 3290, 1060]
-    Open		    on
+    Location		    [1665, 24, 3280, 1050]
+    Open		    off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1886,7 +1886,7 @@ Model {
       }
       System {
 	Name			"Quadrotor"
-	Location		[1655, -14, 3290, 1060]
+	Location		[1665, 24, 3280, 1050]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2037,7 +2037,7 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [110, 165, 195, 195]
 	  ZOrder		  -7
-	  FunctionName		  "dynamics"
+	  FunctionName		  "quadrotor_dynamics"
 	  Parameters		  "quad"
 	  EnableBusSupport	  off
 	}
@@ -2250,8 +2250,8 @@ Model {
       }
       System {
 	Name			"Quadrotor plot"
-	Location		[1655, -14, 3290, 1060]
-	Open			off
+	Location		[1665, 24, 3280, 1050]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -2291,7 +2291,7 @@ Model {
 	  Ports			  [1]
 	  Position		  [155, 105, 215, 135]
 	  ZOrder		  -3
-	  FunctionName		  "plot"
+	  FunctionName		  "quadrotor_plot"
 	  Parameters		  "[2,10], 1, 1"
 	  EnableBusSupport	  off
 	}
