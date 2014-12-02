@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.34"
+    ComputedModelVersion    "1.35"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -20,8 +20,8 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  InitFcn		  "% load parameters of the default quadrotor\ndisp('Quadrotor parameters loaded by InitFcn')\nquadrotor_pa"
-  "ram\nquadrotor_ctrl\ndes_traj"
+  InitFcn		  "% load parameters of the default quadrotor\ndisp('Quadrotor parameters loaded by InitFcn')\nquad_param\n"
+  "ctrl_param\ndes_traj"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -31,7 +31,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1649.0, 14.0, 827.0, 1046.0]
+      Location		      [1655.0, -14.0, 1635.0, 1074.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -55,9 +55,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[771.0, 855.0]
+	Extents			[1579.0, 883.0]
 	ZoomFactor		[1.25]
-	Offset			[-143.44448268651763, -36.18739488825824]
+	Offset			[-143.44448268651763, -36.187394888258268]
       }
     }
   }
@@ -67,9 +67,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "zichao"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Dec 01 18:22:52 2014"
-  RTWModifiedTimeStamp	  339358897
-  ModelVersionFormat	  "1.%<AutoIncrement:34>"
+  LastModifiedDate	  "Tue Dec 02 09:58:40 2014"
+  RTWModifiedTimeStamp	  339414621
+  ModelVersionFormat	  "1.%<AutoIncrement:35>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -981,7 +981,7 @@ Model {
   }
   System {
     Name		    "sl_quadrotor"
-    Location		    [1649, 14, 2476, 1060]
+    Location		    [1655, -14, 3290, 1060]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1906,7 +1906,7 @@ Model {
       }
       System {
 	Name			"Quadrotor"
-	Location		[1665, 24, 3280, 1050]
+	Location		[1655, -14, 3290, 1060]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2247,7 +2247,7 @@ Model {
       RequestExecContextInheritance off
       System {
 	Name			"Quadrotor plot"
-	Location		[1665, 24, 3280, 1050]
+	Location		[1655, -14, 3290, 1060]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -3057,7 +3057,7 @@ Model {
     Annotation {
       SID		      "95"
       Name		      "state vector"
-      Position		      [471, 548, 525, 565]
+      Position		      [471, 548, 526, 565]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3075,7 +3075,7 @@ Model {
     Annotation {
       SID		      "97"
       Name		      "attitude rate\nloop"
-      Position		      [607, 160, 661, 192]
+      Position		      [607, 160, 662, 192]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3085,7 +3085,7 @@ Model {
     Annotation {
       SID		      "98"
       Name		      "attitude\nloop"
-      Position		      [529, 160, 563, 192]
+      Position		      [529, 160, 564, 192]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3095,7 +3095,7 @@ Model {
     Annotation {
       SID		      "99"
       Name		      "position rate\nloop"
-      Position		      [392, 155, 448, 187]
+      Position		      [392, 155, 449, 187]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3115,7 +3115,7 @@ Model {
     Annotation {
       SID		      "101"
       Name		      "yaw rate\nloop"
-      Position		      [312, 390, 351, 422]
+      Position		      [312, 390, 352, 422]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3125,7 +3125,7 @@ Model {
     Annotation {
       SID		      "102"
       Name		      "yaw angle\nloop"
-      Position		      [267, 325, 313, 357]
+      Position		      [267, 325, 314, 357]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3135,7 +3135,7 @@ Model {
     Annotation {
       SID		      "103"
       Name		      "height rate\nloop"
-      Position		      [317, 495, 366, 527]
+      Position		      [317, 495, 367, 527]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
