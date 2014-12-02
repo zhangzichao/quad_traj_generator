@@ -1,8 +1,8 @@
-%% 
+%% run model with this script
 clear; close all; clc;
 
 %% parameters
-sim_time = 10;
+sim_time = 20;
 traj_interval = 0.02;
 enable_plot = true;
 
