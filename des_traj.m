@@ -1,5 +1,5 @@
-time_length = 3;
-interval = 0.02;
+time_length = sim_time;
+interval = traj_interval;
 
 t = 0:interval:time_length;
 
