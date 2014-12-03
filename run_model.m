@@ -2,7 +2,7 @@
 clear; close all; clc;
 
 %% parameters
-sim_time = 20;
+sim_time = 10;
 traj_interval = 0.02;
 enable_plot = true;
 
