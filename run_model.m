@@ -1,5 +1,10 @@
 % run model with this script
 clear; close all; clc;
+derivatives = zeros(1, 13);
+save('derivs.mat', 'derivatives');
+rotors = zeros(1, 5);
+save('rotors.mat', 'rotors');
+
 
 %% parameters
 sim_time = 10;
