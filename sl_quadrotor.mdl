@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.39"
+    ComputedModelVersion    "1.40"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -31,7 +31,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1600.0, 20.0, 1680.0, 1030.0]
+      Location		      [1600.0, 47.0, 1680.0, 1003.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -55,7 +55,7 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1644.0, 887.0]
+	Extents			[1644.0, 860.0]
 	ZoomFactor		[1.25]
 	Offset			[-143.44448268651763, -36.187394888258268]
       }
@@ -67,9 +67,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "zichao"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Dec 04 14:57:22 2014"
-  RTWModifiedTimeStamp	  339605839
-  ModelVersionFormat	  "1.%<AutoIncrement:39>"
+  LastModifiedDate	  "Thu Dec 04 17:36:18 2014"
+  RTWModifiedTimeStamp	  339606185
+  ModelVersionFormat	  "1.%<AutoIncrement:40>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -984,7 +984,7 @@ Model {
   }
   System {
     Name		    "sl_quadrotor"
-    Location		    [1600, 20, 3280, 1050]
+    Location		    [1600, 47, 3280, 1050]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1200,7 +1200,7 @@ Model {
       }
       System {
 	Name			"Control Mixer"
-	Location		[1631, 175, 3133, 1129]
+	Location		[1600, 20, 3280, 1050]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1919,7 +1919,7 @@ Model {
       }
       System {
 	Name			"Quadrotor"
-	Location		[1655, -14, 3290, 1060]
+	Location		[1600, 20, 3280, 1050]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2480,7 +2480,7 @@ Model {
       BlockType		      Terminator
       Name		      "Terminator"
       SID		      "181"
-      Position		      [745, 430, 765, 450]
+      Position		      [745, 410, 765, 430]
       ZOrder		      24
     }
     Block {

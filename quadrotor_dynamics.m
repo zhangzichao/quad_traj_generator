@@ -183,7 +183,7 @@ function sys = mdlDerivatives(t,x,u, quad)
         beta = J'*beta;  %Rotate the beta flapping angles to longitudinal and lateral coordinates.
         a1s(i) = beta(1) - 16/quad.gamma/abs(w(i)) * o(2);
         b1s(i) = beta(2) - 16/quad.gamma/abs(w(i)) * o(1);
-        `
+        
         %Forces and torques
         T(:,i) = quad.Ct*quad.rho*quad.A*quad.r^2*w(i)^2 * [-cos(b1s(i))*sin(a1s(i)); sin(b1s(i));-cos(a1s(i))*cos(b1s(i))];   %Rotor thrust, linearised angle approximations
 %         T(:,i) = quad.Ct*quad.rho*quad.A*quad.r^2*w(i)^2 * [0; 0; -1];
