@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.38"
+    ComputedModelVersion    "1.39"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -31,7 +31,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1665.0, 24.0, 1615.0, 1026.0]
+      Location		      [1600.0, 20.0, 1680.0, 1030.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -55,7 +55,7 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1559.0, 835.0]
+	Extents			[1644.0, 887.0]
 	ZoomFactor		[1.25]
 	Offset			[-143.44448268651763, -36.187394888258268]
       }
@@ -67,9 +67,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "zichao"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Dec 02 11:13:23 2014"
-  RTWModifiedTimeStamp	  339419594
-  ModelVersionFormat	  "1.%<AutoIncrement:38>"
+  LastModifiedDate	  "Thu Dec 04 14:57:22 2014"
+  RTWModifiedTimeStamp	  339605839
+  ModelVersionFormat	  "1.%<AutoIncrement:39>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -968,6 +968,9 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      Terminator
+    }
+    Block {
       BlockType		      ToWorkspace
       VariableName	      "simulink_output"
       MaxDataPoints	      "1000"
@@ -981,7 +984,7 @@ Model {
   }
   System {
     Name		    "sl_quadrotor"
-    Location		    [1665, 24, 3280, 1050]
+    Location		    [1600, 20, 3280, 1050]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -995,7 +998,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "180"
+    SIDHighWatermark	    "182"
     Block {
       BlockType		      ToWorkspace
       Name		      "\n"
@@ -1197,7 +1200,7 @@ Model {
       }
       System {
 	Name			"Control Mixer"
-	Location		[1665, 24, 3280, 1050]
+	Location		[1631, 175, 3133, 1129]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1795,6 +1798,16 @@ Model {
       ZOrder		      19
       ShowName		      off
       Inputs		      "2"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux3"
+      SID		      "182"
+      Ports		      [4, 1]
+      Position		      [845, 351, 850, 414]
+      ZOrder		      25
+      ShowName		      off
       DisplayOption	      "bar"
     }
     Block {
@@ -2464,6 +2477,13 @@ Model {
       SaturateOnIntegerOverflow	off
     }
     Block {
+      BlockType		      Terminator
+      Name		      "Terminator"
+      SID		      "181"
+      Position		      [745, 430, 765, 450]
+      ZOrder		      24
+    }
+    Block {
       BlockType		      ToWorkspace
       Name		      "des thrust"
       SID		      "166"
@@ -2536,7 +2556,7 @@ Model {
       Name		      "four rotors"
       SID		      "164"
       Ports		      [1]
-      Position		      [835, 360, 895, 390]
+      Position		      [870, 370, 930, 400]
       ZOrder		      16
       VariableName	      "four_rotors"
       MaxDataPoints	      "inf"
@@ -2574,15 +2594,35 @@ Model {
       ZOrder		      1
       SrcBlock		      "Control Mixer"
       SrcPort		      1
-      DstBlock		      "Quadrotor"
-      DstPort		      1
+      Points		      [30, 0]
+      Branch {
+	ZOrder			257
+	Points			[0, 255]
+	DstBlock		"Mux3"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			256
+	DstBlock		"Quadrotor"
+	DstPort			1
+      }
     }
     Line {
       ZOrder		      2
       SrcBlock		      "Control Mixer"
       SrcPort		      4
-      DstBlock		      "Quadrotor"
-      DstPort		      4
+      Points		      [9, 0]
+      Branch {
+	ZOrder			263
+	Points			[0, 120]
+	DstBlock		"Mux3"
+	DstPort			4
+      }
+      Branch {
+	ZOrder			262
+	DstBlock		"Quadrotor"
+	DstPort			4
+      }
     }
     Line {
       ZOrder		      3
@@ -3005,23 +3045,35 @@ Model {
       ZOrder		      62
       SrcBlock		      "Control Mixer"
       SrcPort		      3
-      DstBlock		      "Quadrotor"
-      DstPort		      3
+      Points		      [15, 0]
+      Branch {
+	ZOrder			261
+	Points			[0, 165]
+	DstBlock		"Mux3"
+	DstPort			3
+      }
+      Branch {
+	ZOrder			260
+	DstBlock		"Quadrotor"
+	DstPort			3
+      }
     }
     Line {
       ZOrder		      63
       SrcBlock		      "Control Mixer"
       SrcPort		      2
-      DstBlock		      "Quadrotor"
-      DstPort		      2
-    }
-    Line {
-      ZOrder		      146
-      SrcBlock		      "Control Mixer"
-      SrcPort		      5
-      Points		      [20, 0; 0, 30]
-      DstBlock		      "four rotors"
-      DstPort		      1
+      Points		      [23, 0]
+      Branch {
+	ZOrder			259
+	Points			[0, 210]
+	DstBlock		"Mux3"
+	DstPort			2
+      }
+      Branch {
+	ZOrder			258
+	DstBlock		"Quadrotor"
+	DstPort			2
+      }
     }
     Line {
       ZOrder		      149
@@ -3045,6 +3097,21 @@ Model {
       DstBlock		      "Mux1"
       DstPort		      2
     }
+    Line {
+      ZOrder		      254
+      SrcBlock		      "Control Mixer"
+      SrcPort		      5
+      Points		      [5, 0; 0, 54; -65, 0]
+      DstBlock		      "Terminator"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      255
+      SrcBlock		      "Mux3"
+      SrcPort		      1
+      DstBlock		      "four rotors"
+      DstPort		      1
+    }
     Annotation {
       SID		      "94"
       Name		      " "
@@ -3057,7 +3124,7 @@ Model {
     Annotation {
       SID		      "95"
       Name		      "state vector"
-      Position		      [471, 548, 525, 565]
+      Position		      [471, 548, 526, 565]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3075,7 +3142,7 @@ Model {
     Annotation {
       SID		      "97"
       Name		      "attitude rate\nloop"
-      Position		      [607, 160, 661, 192]
+      Position		      [607, 160, 662, 192]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3085,7 +3152,7 @@ Model {
     Annotation {
       SID		      "98"
       Name		      "attitude\nloop"
-      Position		      [529, 160, 563, 192]
+      Position		      [529, 160, 564, 192]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3095,7 +3162,7 @@ Model {
     Annotation {
       SID		      "99"
       Name		      "position rate\nloop"
-      Position		      [392, 155, 448, 187]
+      Position		      [392, 155, 449, 187]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3115,7 +3182,7 @@ Model {
     Annotation {
       SID		      "101"
       Name		      "yaw rate\nloop"
-      Position		      [312, 390, 351, 422]
+      Position		      [312, 390, 352, 422]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3125,7 +3192,7 @@ Model {
     Annotation {
       SID		      "102"
       Name		      "yaw angle\nloop"
-      Position		      [267, 325, 313, 357]
+      Position		      [267, 325, 314, 357]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3135,7 +3202,7 @@ Model {
     Annotation {
       SID		      "103"
       Name		      "height rate\nloop"
-      Position		      [317, 495, 366, 527]
+      Position		      [317, 495, 367, 527]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
