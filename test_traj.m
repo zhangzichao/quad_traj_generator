@@ -7,7 +7,7 @@ clear; close all; clc;
 %% set parameters
 dt = 0.1; v = 2.5;
 t1 = 2; t2 = 4; t3 = 6;
-p0 = [0, 0, 0];
+p0 = [0, 0, 1];      % make sure cam in the scene
 orie = [1, 0, 0, 0]; % fixed
 total_len = length(0:0.1:t3);
 traj_matrix = zeros(total_len, 8);
