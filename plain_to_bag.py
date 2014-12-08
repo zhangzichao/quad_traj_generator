@@ -17,7 +17,7 @@ for row in traj_quad:
     # pose
     pose = Pose()
     pose.position = Point(row[1], row[2], row[3])
-    pose.orientation = Quaternion(row[7], row[4], row[5], row[6])
+    pose.orientation = Quaternion(row[5], row[6], row[7], row[4])
 
     # time
     rel_sec = row[0]
