@@ -185,8 +185,8 @@ function sys = mdlDerivatives(t,x,u, quad)
         b1s(i) = beta(2) - 16/quad.gamma/abs(w(i)) * o(1);
         
         %Forces and torques
-        T(:,i) = quad.Ct*quad.rho*quad.A*quad.r^2*w(i)^2 * [-cos(b1s(i))*sin(a1s(i)); sin(b1s(i));-cos(a1s(i))*cos(b1s(i))];   %Rotor thrust, linearised angle approximations
-%         T(:,i) = quad.Ct*quad.rho*quad.A*quad.r^2*w(i)^2 * [0; 0; -1];
+%         T(:,i) = quad.Ct*quad.rho*quad.A*quad.r^2*w(i)^2 * [-cos(b1s(i))*sin(a1s(i)); sin(b1s(i));-cos(a1s(i))*cos(b1s(i))];   %Rotor thrust, linearised angle approximations
+        T(:,i) = quad.Ct*quad.rho*quad.A*quad.r^2*w(i)^2 * [0; 0; -1];
         Q(:,i) = -quad.Cq*quad.rho*quad.A*quad.r^3*w(i)*abs(w(i)) * e3;     %Rotor drag torque - note that this preserves w(i) direction sign
         tau(:,i) = cross(T(:,i),D(:,i));    %Torque due to rotor thrust
     end
@@ -201,9 +201,22 @@ function sys = mdlDerivatives(t,x,u, quad)
     load('derivs.mat');
     derivatives = [derivatives; [t,sys']];
     save('derivs.mat', 'derivatives');
+    
     load('rotors.mat');
     rotors = [rotors; [t, w']];
     save('rotors.mat', 'rotors');
+    
+    load('thrust.mat');
+    thrust_gt = [thrust_gt; [t, sum(T,2)']];
+    save('thrust.mat', 'thrust_gt');
+    
+    load('torque.mat');
+    torque_gt = [torque_gt; [t, sum(tau,2)']];
+    save('torque.mat', 'torque_gt');
+    
+    load('drag_torq.mat');
+    drag_torq_gt = [drag_torq_gt; [t, sum(Q,2)']];
+    save('drag_torq.mat', 'drag_torq_gt');
     
 end % End of mdlDerivatives.
 

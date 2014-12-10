@@ -4,6 +4,12 @@ derivatives = zeros(1, 13);
 save('derivs.mat', 'derivatives');
 rotors = zeros(1, 5);
 save('rotors.mat', 'rotors');
+thrust_gt = zeros(1, 4);
+save('thrust.mat', 'thrust_gt');
+torque_gt = zeros(1, 4);
+save('torque.mat', 'torque_gt');
+drag_torq_gt = zeros(1, 4);
+save('drag_torq.mat', 'drag_torq_gt');
 
 
 %% parameters
