@@ -42,10 +42,15 @@ function [sys,x0,str,ts] = quadrotor_dynamics(t,x,u,flag, quad)
     %   x = [z1 z2 z3 n1 n2 n3 z1 z2 z3 o1 o2 o3 w1 w2 w3 w4]
     
     %INITIAL CONDITIONS
-    z0 = [-1 0 -.15];              %   z0      Position initial conditions         1x3
-    n0 = [0 0 0];               %   n0      Ang. position initial conditions    1x3
-    v0 = [0 0 0];               %   v0      Velocity Initial conditions         1x3
-    o0 = [0 0 0];               %   o0      Ang. velocity initial conditions    1x3
+%     z0 = [-1 0 -.15];              %   z0      Position initial conditions         1x3
+%     n0 = [0 0 0];               %   n0      Ang. position initial conditions    1x3
+%     v0 = [0 0 0];               %   v0      Velocity Initial conditions         1x3
+%     o0 = [0 0 0];               %   o0      Ang. velocity initial conditions    1x3
+
+    z0 = [-1 0 -3];
+    n0 = [0 0 0];
+    v0 = [0 0 0];
+    o0 = [0 0 0];
     init = [z0 n0 v0 o0];
     
     %CONTINUOUS STATE EQUATIONS
