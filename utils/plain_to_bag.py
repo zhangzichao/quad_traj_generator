@@ -1,14 +1,21 @@
+#!/usr/bin/env python
+
 import rospy
 import rosbag
+import os
 import numpy as np
 from geometry_msgs.msg import Pose, Point, Quaternion
 
+# output path
+workspace_dir = os.path.dirname(os.path.realpath(__file__))+'/..'
+output_dir = os.path.join(workspace_dir, 'output')
+
 # rosbag
 rospy.init_node('convert_bag')
-bag = rosbag.Bag('test.bag', 'w')
+bag = rosbag.Bag(os.path.join(output_dir, 'test.bag'), 'w')
 
 # load source txt
-traj_quad = np.loadtxt('traj_test_quad.txt')
+traj_quad = np.loadtxt(os.path.join(output_dir, 'txt', 'traj_test_quad.txt'))
 
 # time
 base_sec = rospy.Time.now().to_sec();

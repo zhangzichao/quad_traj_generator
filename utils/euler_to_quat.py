@@ -1,12 +1,18 @@
+#!/usr/bin/env python
+
 import numpy as np
 import transformations as tf
 from math import pi
 import os
 import sys
 
-traj_euler = np.loadtxt("traj_euler.txt")
-open("traj_quaternion.txt", 'w').close
-traj_quaternion = open("traj_quaternion.txt", 'w')
+workspace_dir = os.path.dirname(os.path.abspath(__file__)) + '/..'
+output_dir = os.path.join(workspace_dir, 'output')
+
+traj_euler = np.loadtxt(os.path.join(output_dir, 'txt', "traj_euler.txt"))
+output_file = os.path.join(output_dir, 'txt', "traj_quaternion.txt")
+open(output_file, 'w').close
+traj_quaternion = open(output_file, 'w')
 for row in traj_euler:
 # convert to z-upward coordinate system
 # only need to transform the position

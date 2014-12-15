@@ -16,4 +16,4 @@ traj_matrix(:, 6) = quad_states.pitch.Data;
 traj_matrix(:, 7) = quad_states.yaw.Data;
 
 % save
-save('traj_euler.txt', 'traj_matrix', '-ascii');
+save('output/txt/traj_euler.txt', 'traj_matrix', '-ascii');

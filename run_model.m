@@ -1,5 +1,6 @@
 % run model with this script
 clear; close all; clc;
+% mat files updated in simulink model
 derivatives = zeros(1, 13);
 save('derivs.mat', 'derivatives');
 rotors = zeros(1, 5);
@@ -10,7 +11,9 @@ torque_gt = zeros(1, 4);
 save('torque.mat', 'torque_gt');
 drag_torq_gt = zeros(1, 4);
 save('drag_torq.mat', 'drag_torq_gt');
-
+% add path
+addpath(fullfile(pwd, 'sim'));
+addpath(fullfile(pwd, 'utils'));
 
 %% parameters
 sim_time = 10;
@@ -18,7 +21,7 @@ traj_interval = 0.02;
 enable_plot = true;
 
 %% load model and run
-model = 'sl_quadrotor';
+model = 'sim/sl_quadrotor';
 sim_out = sim(model, 'StopTime', int2str(sim_time));
 
 %% extract simulation result
@@ -34,3 +37,4 @@ tout = sim_out.get('tout');
 
 save('result.mat', 'des_pitch_roll', 'des_thrust', 'des_torq', 'des_xy',...
     'des_yaw', 'des_z', 'four_rotors', 'quad_states', 'tout', 'quad');
+movefile('*.mat', './output');

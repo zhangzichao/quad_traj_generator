@@ -32,4 +32,4 @@ for k = 1: length(t)
 end
 
 %% save
-save('traj_test_quad.txt', 'traj_matrix', '-ascii');
+save('output/txt/traj_test_quad.txt', 'traj_matrix', '-ascii');
