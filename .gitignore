@@ -1,7 +1,4 @@
 *.autosave
 *~
-*.mat
-*.txt
 *.pyc
 *.sh
-*.bag
