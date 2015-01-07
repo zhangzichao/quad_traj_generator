@@ -19,6 +19,7 @@ addpath(fullfile(pwd, 'utils'));
 sim_time = 10;
 traj_interval = 0.02;
 enable_plot = true;
+output_interval = 0.025; % 40fps
 
 %% load model and run
 model = 'sim/sl_quadrotor';
@@ -35,6 +36,9 @@ four_rotors = sim_out.get('four_rotors');
 quad_states = sim_out.get('quad_states');
 tout = sim_out.get('tout');
 
+
 save('result.mat', 'des_pitch_roll', 'des_thrust', 'des_torq', 'des_xy',...
     'des_yaw', 'des_z', 'four_rotors', 'quad_states', 'tout', 'quad');
 movefile('*.mat', './output');
+save_euler_txt;
+system('./utils/euler_to_quat.py');

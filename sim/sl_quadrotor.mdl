@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.40"
+    ComputedModelVersion    "1.45"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -31,7 +31,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1600.0, 47.0, 1680.0, 1003.0]
+      Location		      [0.0, 4.0, 1680.0, 1003.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -55,7 +55,7 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1644.0, 860.0]
+	Extents			[1640.0, 817.0]
 	ZoomFactor		[1.25]
 	Offset			[-143.44448268651763, -36.187394888258268]
       }
@@ -67,9 +67,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "zichao"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Dec 04 17:36:18 2014"
-  RTWModifiedTimeStamp	  339606185
-  ModelVersionFormat	  "1.%<AutoIncrement:40>"
+  LastModifiedDate	  "Tue Dec 16 10:49:50 2014"
+  RTWModifiedTimeStamp	  340627787
+  ModelVersionFormat	  "1.%<AutoIncrement:45>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -984,7 +984,7 @@ Model {
   }
   System {
     Name		    "sl_quadrotor"
-    Location		    [1600, 47, 3280, 1050]
+    Location		    [0, 4, 1680, 1007]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -998,7 +998,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "182"
+    SIDHighWatermark	    "183"
     Block {
       BlockType		      ToWorkspace
       Name		      "\n"
@@ -2518,7 +2518,7 @@ Model {
       Position		      [0, 43, 65, 67]
       ZOrder		      20
       VariableName	      "traj.x"
-      SampleTime	      "0"
+      SampleTime	      "output_interval"
       ZeroCross		      on
     }
     Block {
@@ -2528,7 +2528,7 @@ Model {
       Position		      [0, 93, 65, 117]
       ZOrder		      21
       VariableName	      "traj.y"
-      SampleTime	      "0"
+      SampleTime	      "output_interval"
       ZeroCross		      on
     }
     Block {
@@ -2538,7 +2538,7 @@ Model {
       Position		      [15, 308, 80, 332]
       ZOrder		      22
       VariableName	      "traj.yaw"
-      SampleTime	      "0"
+      SampleTime	      "output_interval"
       ZeroCross		      on
     }
     Block {
@@ -2548,7 +2548,7 @@ Model {
       Position		      [15, 433, 80, 457]
       ZOrder		      23
       VariableName	      "traj.z"
-      SampleTime	      "0"
+      SampleTime	      "output_interval"
       ZeroCross		      on
     }
     Block {
@@ -3124,7 +3124,7 @@ Model {
     Annotation {
       SID		      "95"
       Name		      "state vector"
-      Position		      [471, 548, 526, 565]
+      Position		      [471, 548, 525, 565]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3142,7 +3142,7 @@ Model {
     Annotation {
       SID		      "97"
       Name		      "attitude rate\nloop"
-      Position		      [607, 160, 662, 192]
+      Position		      [607, 160, 661, 192]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3152,7 +3152,7 @@ Model {
     Annotation {
       SID		      "98"
       Name		      "attitude\nloop"
-      Position		      [529, 160, 564, 192]
+      Position		      [529, 160, 563, 192]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3162,7 +3162,7 @@ Model {
     Annotation {
       SID		      "99"
       Name		      "position rate\nloop"
-      Position		      [392, 155, 449, 187]
+      Position		      [392, 155, 448, 187]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3182,7 +3182,7 @@ Model {
     Annotation {
       SID		      "101"
       Name		      "yaw rate\nloop"
-      Position		      [312, 390, 352, 422]
+      Position		      [312, 390, 351, 422]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3192,7 +3192,7 @@ Model {
     Annotation {
       SID		      "102"
       Name		      "yaw angle\nloop"
-      Position		      [267, 325, 314, 357]
+      Position		      [267, 325, 313, 357]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3202,7 +3202,7 @@ Model {
     Annotation {
       SID		      "103"
       Name		      "height rate\nloop"
-      Position		      [317, 495, 367, 527]
+      Position		      [317, 495, 366, 527]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
