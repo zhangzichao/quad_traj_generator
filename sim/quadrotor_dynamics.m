@@ -47,7 +47,7 @@ function [sys,x0,str,ts] = quadrotor_dynamics(t,x,u,flag, quad)
 %     v0 = [0 0 0];               %   v0      Velocity Initial conditions         1x3
 %     o0 = [0 0 0];               %   o0      Ang. velocity initial conditions    1x3
 
-    z0 = [-1 0 -3];
+    z0 = [-1 0 -2];
     n0 = [0 0 0];
     v0 = [0 0 0];
     o0 = [0 0 0];
