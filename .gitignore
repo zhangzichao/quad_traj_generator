@@ -2,3 +2,5 @@
 *~
 *.pyc
 *.sh
+*.mat
+*.txt
