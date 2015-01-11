@@ -40,5 +40,6 @@ tout = sim_out.get('tout');
 save('result.mat', 'des_pitch_roll', 'des_thrust', 'des_torq', 'des_xy',...
     'des_yaw', 'des_z', 'four_rotors', 'quad_states', 'tout', 'quad');
 movefile('*.mat', './output');
+mkdir('output/txt')
 save_euler_txt;
 system('./utils/euler_to_quat.py');
