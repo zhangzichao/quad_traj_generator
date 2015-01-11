@@ -18,5 +18,4 @@ Functions are tested with Matlab2014b.
     - `compare_plot.m`: simple script to plot the difference between desired trajectory and simulated trajectory output
     - `save_euler_txt.m`: save simulation result as plain text files
     - `euler_to_quat.py`: covert plain text result from z-y'-x'' euler to quaternion (source and target are hard-coded)
-    - `plain_to_bag.py`: convert plain text result(quad format) to rosbag file (source and target are hard-coded)
 * `test_traj.m`: simple test trajectory
