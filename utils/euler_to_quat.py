@@ -28,7 +28,8 @@ for row in traj_euler:
 
 # convert to quaternion
 # note: the quaternion order as [x y z w]
-    #quaternion = tf.quaternion_from_matrix(R_total)
-    quaternion = tf.quaternion_from_euler(row[4], row[5], row[6]);
+#       from downward-z to upward-z and x-y swap
+#       rotz(yaw)*rosy(pitch)*rotx(roll) -> rotz(-yaw)*rotx(pitch)*roty(roll)
+    quaternion = tf.quaternion_from_euler((-1)*row[4], row[5], row[6], 'rzxy');
     traj_quaternion.write("%.6f %.4f %.4f %.4f %.4f %.4f %.4f %.4f\n" %(row[0], row[1], row[2], row[3],
                  quaternion[1], quaternion[2], quaternion[3], quaternion[0]));
